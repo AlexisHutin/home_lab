@@ -15,7 +15,8 @@ In my home lab setup, I utilize two main hardware components:
 ## Virtualization
 
 To efficiently manage and deploy services within my home lab, I employ Docker for virtualization. Docker allows me to encapsulate each service into lightweight, portable containers, enabling easy deployment, scaling, and management across different hardware platforms.
-Future Expansion
+
+## Future Expansion
 
 While my current setup meets my immediate needs, I'm continuously exploring opportunities for expansion and improvement. This includes experimenting with new services, optimizing resource allocation, and integrating emerging technologies to enhance the capabilities of my home lab.
 
@@ -61,4 +62,16 @@ A significant portion of my services are accessible from the outside world thank
 Additionally, I utilize a local DNS server to provide more user-friendly domain names for my services. This is achieved through a combination of Bind9 for DNS resolution and the reverse proxy for routing traffic based on domain names. This setup enables me to access my services using more intuitive domain names rather than relying solely on IP addresses and ports, which can be cumbersome.
 
 For more details on my local DNS configuration, please refer to [this file](link_to_your_local_dns_config).
+
+## Monitoring
+
+In my home lab setup, I employ several tools for monitoring different aspects of my infrastructure:
+
+- **Dashdot:** I use Dashdot for a quick overview of the general resource consumption of my server. It provides a concise summary of system performance metrics.
+
+- **Prometheus/Grafana:** For more detailed metrics and visualization, I utilize the combination of Prometheus and Grafana. Prometheus collects metrics from various sources, while Grafana serves as a powerful visualization tool. This setup allows me to monitor and analyze system performance in greater depth.
+
+- **Telegraf/InfluxDB:** In parallel, I leverage Telegraf to gather custom metrics from my Minecraft server, which are then stored in InfluxDB. Additionally, I capture certain metrics from Home Assistant and store them in the same InfluxDB database. While I currently display only a subset of these data in Grafana, my monitoring setup is designed to evolve over time as I refine and expand my monitoring requirements.
+
+This multi-layered monitoring approach provides me with both high-level insights and detailed analytics, enabling me to effectively manage and optimize my home lab environment.
 
