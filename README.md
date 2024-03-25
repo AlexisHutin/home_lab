@@ -52,4 +52,13 @@ While my current setup meets my immediate needs, I'm continuously exploring oppo
 
 For access to all Docker Compose files, please visit [this folder](link_to_your_folder_containing_docker_compose_files).
 
+## Networking
+
+In my home lab setup, I have two machines: the Raspberry Pi and my server, each configured with static IP addresses assigned by my router provided by Free. 
+
+A significant portion of my services are accessible from the outside world thanks to a reverse proxy setup and DuckDNS. This allows me to conveniently access my services remotely without exposing individual ports.
+
+Additionally, I utilize a local DNS server to provide more user-friendly domain names for my services. This is achieved through a combination of Bind9 for DNS resolution and the reverse proxy for routing traffic based on domain names. This setup enables me to access my services using more intuitive domain names rather than relying solely on IP addresses and ports, which can be cumbersome.
+
+For more details on my local DNS configuration, please refer to [this file](link_to_your_local_dns_config).
 
