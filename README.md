@@ -77,3 +77,11 @@ In the near future, I plan to incorporate alerting into my monitoring setup. Thi
 
 This multi-layered monitoring approach provides me with both high-level insights and detailed analytics, enabling me to effectively manage and optimize my home lab environment.
 
+
+
+
+
+## AI Assistance
+
+This documentation was created with the assistance of AI. Through the collaboration with an AI language model, I was able to streamline the process of documenting my home lab setup, ensuring clarity and comprehensiveness in conveying the details of my infrastructure and configurations. This usage of AI technology has facilitated the documentation process, enabling me to focus on refining and enhancing my home lab environment.
+
