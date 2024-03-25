@@ -20,35 +20,35 @@ Future Expansion
 While my current setup meets my immediate needs, I'm continuously exploring opportunities for expansion and improvement. This includes experimenting with new services, optimizing resource allocation, and integrating emerging technologies to enhance the capabilities of my home lab.
 
 ## My Services
-1. **BIND9:** An open-source DNS server.
-2. **Dashdot:** A dashboard for monitoring my server.
-3. **Dozzle:** A web interface for viewing Docker logs.
-4. **DuckDNS:** A free dynamic DNS update service.
-5. **Faster-Whisper:** A STT service.
-6. **Filebrowser:** A web-based file manager.
-7. **Flaresolverr:** A captcha resolver for media streaming.
-8. **Grafana:** A data analysis and visualization platform.
-9. **Homer:** A web portal for quick access to your applications and services.
-10. **InfluxDB:** A time-series database.
-11. **Jackett:** A torrent tracker aggregator.
-12. **Kaizoku:** A service like Radarr or Sonarr but for scan.
-13. **Komga:** A digital manga library.
-14. **Minecraft Server:** A game server for Minecraft.
-15. **Monocker:** A Docker container health monitoring & alerting service.
-16. **n8n:** A workflow automation tool.
-17. **Nginx-Proxy-Manager:** An Nginx proxy manager for hosting multiple websites on the same server.
-18. **Olivetin:** Predifined shell commands from web ui.
-19. **Ollama:** A selfhosted LLM service.
-20. **Open-WebUI:** A web ui for Ollama.
-21. **Overseerr:** A request manager for missing media.
-22. **Piper:** A TTS service.
-23. **Plex:** A media server for streaming content.
-24. **Prometheus:** A monitoring and alerting system.
-25. **QBittorrent:** A BitTorrent client.
-26. **Radarr:** A movie manager.
-27. **Sonarr:** A TV series manager.
-28. **Telegraf:** A data collection agent for InfluxDB.
-29. **Watchtower:** An automatic update service for Docker containers.
+- **BIND9:** An open-source DNS server.
+- **Dashdot:** A dashboard for monitoring my server.
+- **Dozzle:** A web interface for viewing Docker logs.
+- **DuckDNS:** A free dynamic DNS update service.
+- **Faster-Whisper:** A STT service.
+- **Filebrowser:** A web-based file manager.
+- **Flaresolverr:** A captcha resolver for media streaming.
+- **Grafana:** A data analysis and visualization platform.
+- **Homer:** A web portal for quick access to your applications and services.
+- **InfluxDB:** A time-series database.
+- **Jackett:** A torrent tracker aggregator.
+- **Kaizoku:** A service like Radarr or Sonarr but for scan.
+- **Komga:** A digital manga library.
+- **Minecraft Server:** A game server for Minecraft.
+- **Monocker:** A Docker container health monitoring & alerting service.
+- **n8n:** A workflow automation tool.
+- **Nginx-Proxy-Manager:** An Nginx proxy manager for hosting multiple websites on the same server.
+- **Olivetin:** Predifined shell commands from web ui.
+- **Ollama:** A selfhosted LLM service.
+- **Open-WebUI:** A web ui for Ollama.
+- **Overseerr:** A request manager for missing media.
+- **Piper:** A TTS service.
+- **Plex:** A media server for streaming content.
+- **Prometheus:** A monitoring and alerting system.
+- **QBittorrent:** A BitTorrent client.
+- **Radarr:** A movie manager.
+- **Sonarr:** A TV series manager.
+- **Telegraf:** A data collection agent for InfluxDB.
+- **Watchtower:** An automatic update service for Docker containers.
 
 For access to all Docker Compose files, please visit [this folder](link_to_your_folder_containing_docker_compose_files).
 
