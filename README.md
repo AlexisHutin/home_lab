@@ -1,5 +1,6 @@
 # home_lab
-## Overview
+
+## Overview
 
 The primary objective of my home lab is to host various services independently, reducing reliance on cloud services, and fostering continuous learning through experimentation.
 Setup
@@ -10,7 +11,7 @@ In my home lab setup, I utilize two main hardware components:
 
 - Powerful Server: For more demanding tasks and services, I have a more robust server equipped with ample storage, considerable RAM, and a dedicated GPU for AI-related workloads. This server runs on Ubuntu Server as the operating system, providing a stable and versatile environment for hosting a wide range of services.
 
-## Virtualization
+## Virtualization
 
 To efficiently manage and deploy services within my home lab, I employ Docker for virtualization. Docker allows me to encapsulate each service into lightweight, portable containers, enabling easy deployment, scaling, and management across different hardware platforms.
 Future Expansion
