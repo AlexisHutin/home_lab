@@ -1,5 +1,4 @@
-# home_lab
-
+# Home Lab 🧪
 ## Overview
 
 The primary objective of my home lab is to host various services independently, reducing reliance on cloud services, and fostering continuous learning through experimentation.
