@@ -57,6 +57,10 @@ While my current setup meets my immediate needs, I'm continuously exploring oppo
 
 For access to all Docker Compose files, please visit [this folder](link_to_your_folder_containing_docker_compose_files).
 
+Below is a visual representation of the services comprising my homelab setup:
+
+![Homelab Diagram](HomeLab.drawio.png)
+
 ## Networking
 
 In my home lab setup, I have two machines: the Raspberry Pi and my server, each configured with static IP addresses assigned by my router provided by Free. 
