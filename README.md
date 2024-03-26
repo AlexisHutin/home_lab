@@ -13,7 +13,11 @@ In my home lab setup, I utilize two main hardware components:
 
 ## Virtualization
 
-To efficiently manage and deploy services within my home lab, I employ Docker for virtualization. Docker allows me to encapsulate each service into lightweight, portable containers, enabling easy deployment, scaling, and management across different hardware platforms.
+In my home lab setup, Docker serves as the primary virtualization tool, allowing me to efficiently manage and deploy containerized services. Docker provides a lightweight and portable solution for encapsulating each service into its own container, ensuring consistency and ease of management across different platforms.
+
+Additionally, I utilize Portainer as a Docker management interface, which simplifies the management of my containerized applications. Portainer offers a user-friendly web interface that allows me to monitor, manage, and deploy containers with ease, providing a centralized management solution for my Docker environment.
+
+This combination of Docker and Portainer facilitates the seamless deployment and management of my services within my home lab, enabling efficient resource utilization and streamlined operations.
 
 ## Future Expansion
 
@@ -43,6 +47,7 @@ While my current setup meets my immediate needs, I'm continuously exploring oppo
 - **Overseerr:** A request manager for missing media.
 - **Piper:** A TTS service.
 - **Plex:** A media server for streaming content.
+- **Portainer:** A Docker container management interface.
 - **Prometheus:** A monitoring and alerting system.
 - **QBittorrent:** A BitTorrent client.
 - **Radarr:** A movie manager.
@@ -77,6 +82,19 @@ In the near future, I plan to incorporate alerting into my monitoring setup. Thi
 This multi-layered monitoring approach provides me with both high-level insights and detailed analytics, enabling me to effectively manage and optimize my home lab environment.
 
 
+## Backup and Recovery
+
+Currently, I am in the process of devising a backup strategy, exploring tools to automate backups in a straightforward manner. The plan, as it stands, includes:
+
+- Backing up the configurations of all my containers.
+- Creating backups of all my Docker Compose configurations within Portainer (along with Portainer's own configurations).
+
+Future steps include:
+
+- Duplicating these backups to a local backup server (planned but not yet available).
+- Duplicating these backups to the cloud for added redundancy.
+
+By implementing this backup plan, I aim to safeguard against data loss and ensure the resilience of my home lab environment. Stay tuned for further updates as this backup strategy evolves.
 
 
 
