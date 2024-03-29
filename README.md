@@ -71,6 +71,8 @@ Additionally, I utilize a local DNS server to provide more user-friendly domain 
 
 For more details on my local DNS configuration, please refer to [this file](link_to_your_local_dns_config).
 
+Moreover, I am planning to enhance the security of my network by implementing VLANs. Learning and adding VLANs will enable me to segment certain parts of my network, enhancing security by isolating specific devices or services from others. This will provide an additional layer of protection and control over network traffic within my homelab environment.
+
 ## Monitoring
 
 In my home lab setup, I employ several tools for monitoring different aspects of my infrastructure:
