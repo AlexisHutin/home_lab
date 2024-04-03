@@ -53,6 +53,7 @@ While my current setup meets my immediate needs, I'm continuously exploring oppo
 - **Radarr:** A movie manager.
 - **Sonarr:** A TV series manager.
 - **Telegraf:** A data collection agent for InfluxDB.
+- **Uptime Kuma:** A monitoring tool focused on uptime monitoring and status page generation.
 - **Watchtower:** An automatic update service for Docker containers.
 
 For access to all Docker Compose files, please visit [this folder](link_to_your_folder_containing_docker_compose_files).
@@ -82,6 +83,8 @@ In my home lab setup, I employ several tools for monitoring different aspects of
 - **Prometheus/Grafana:** For more detailed metrics and visualization, I utilize the combination of Prometheus and Grafana. Prometheus collects metrics from various sources, while Grafana serves as a powerful visualization tool. This setup allows me to monitor and analyze system performance in greater depth.
 
 - **Telegraf/InfluxDB:** In parallel, I leverage Telegraf to gather custom metrics from my Minecraft server, which are then stored in InfluxDB. Additionally, I capture certain metrics from Home Assistant and store them in the same InfluxDB database. While I currently display only a subset of these data in Grafana, my monitoring setup is designed to evolve over time as I refine and expand my monitoring requirements.
+  
+- **Uptime Kuma:** Furthermore, I incorporate Uptime Kuma for uptime monitoring and status page generation. This tool helps me track the availability of my services and provides real-time visibility into system health.
 
 In the near future, I plan to incorporate alerting into my monitoring setup. This will enable me to receive notifications and take proactive actions based on predefined thresholds and conditions, further enhancing the reliability and resilience of my home lab environment.
 
