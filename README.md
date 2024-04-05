@@ -68,9 +68,9 @@ In my home lab setup, I have two machines: the Raspberry Pi and my server, each 
 
 A small portion of my services are accessible from the outside world thanks to a reverse proxy setup and DuckDNS. This allows me to conveniently access my services remotely without exposing individual ports.
 
-Additionally, I utilize a local DNS server to provide more user-friendly domain names for my services. This is achieved through a combination of Bind9 for DNS resolution and the reverse proxy for routing traffic based on domain names. This setup enables me to access my services using more intuitive domain names rather than relying solely on IP addresses and ports, which can be cumbersome.
+<!-- Additionally, I utilize a local DNS server to provide more user-friendly domain names for my services. This is achieved through a combination of Bind9 for DNS resolution and the reverse proxy for routing traffic based on domain names. This setup enables me to access my services using more intuitive domain names rather than relying solely on IP addresses and ports, which can be cumbersome.
 
-For more details on my local DNS configuration, please refer to [this file](link_to_your_local_dns_config).
+For more details on my local DNS configuration, please refer to [this file](link_to_your_local_dns_config). -->
 
 Moreover, I am planning to enhance the security of my network by implementing VLANs. Learning and adding VLANs will enable me to segment certain parts of my network, enhancing security by isolating specific devices or services from others. This will provide an additional layer of protection and control over network traffic within my homelab environment.
 
