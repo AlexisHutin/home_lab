@@ -11,6 +11,8 @@ In my home lab setup, I utilize two main hardware components:
 
 - Powerful Server: For more demanding tasks and services, I have a more robust server equipped with ample storage, considerable RAM, and a dedicated GPU for AI-related workloads. This server runs on Ubuntu Server as the operating system, providing a stable and versatile environment for hosting a wide range of services.
 
+- NUC: This small form-factor computer will be dedicated to backup operations. It offers a compact yet powerful solution for managing backups and ensuring data integrity.
+
 ## Virtualization
 
 In my home lab setup, Docker serves as the primary virtualization tool, allowing me to efficiently manage and deploy containerized services. Docker provides a lightweight and portable solution for encapsulating each service into its own container, ensuring consistency and ease of management across different platforms.
@@ -51,7 +53,10 @@ While my current setup meets my immediate needs, I'm continuously exploring oppo
 - **Prometheus:** A monitoring and alerting system.
 - **QBittorrent:** A BitTorrent client.
 - **Radarr:** A movie manager.
+- **RomM:** A tool for managing ROM files.
+- **Scrutiny:** A web-based tool for monitoring and analyzing disk health.
 - **Sonarr:** A TV series manager.
+- **Tautulli:** A monitoring and tracking tool for Plex Media Server.
 - **Telegraf:** A data collection agent for InfluxDB.
 - **Uptime Kuma:** A monitoring tool focused on uptime monitoring and status page generation.
 - **Watchtower:** An automatic update service for Docker containers.
@@ -85,6 +90,8 @@ In my home lab setup, I employ several tools for monitoring different aspects of
 - **Telegraf/InfluxDB:** In parallel, I leverage Telegraf to gather custom metrics from my Minecraft server, which are then stored in InfluxDB. Additionally, I capture certain metrics from Home Assistant and store them in the same InfluxDB database. While I currently display only a subset of these data in Grafana, my monitoring setup is designed to evolve over time as I refine and expand my monitoring requirements.
   
 - **Uptime Kuma:** Furthermore, I incorporate Uptime Kuma for uptime monitoring and status page generation. This tool helps me track the availability of my services and provides real-time visibility into system health.
+
+- **Scrutiny:** I use Scrutiny to monitor and analyze the health of my disks. It provides detailed information on the status of storage devices, enabling proactive maintenance and prevention of data loss.
 
 In the near future, I plan to incorporate alerting into my monitoring setup. This will enable me to receive notifications and take proactive actions based on predefined thresholds and conditions, further enhancing the reliability and resilience of my home lab environment.
 
