@@ -36,6 +36,33 @@ In addition to this, I have a **4-node ThinkCentre cluster (with a dedicated swi
 This cluster is intended as a learning platform to experiment with Kubernetes and cluster management, likely using NixOS in the future.  
 A dedicated section will cover this setup once it is operational.
 
+```mermaid
+graph TD
+
+Internet((Internet)) --> Router[Home Router]
+
+Router --> MainServer[Main Server]
+
+Router --> NUC1[NUC - Infra / Monitoring]
+
+Router --> NUC2[NUC - Home Assistant]
+
+Internet --> OVH[OVH Barmetal]
+
+MainServer --> Media[Media Stack]
+MainServer --> Automation[n8n + AI tools]
+MainServer --> Tools[Filebrowser / Wiki / Utilities]
+
+NUC1 --> AdGuard[AdGuard DNS]
+NUC1 --> Monitoring[Uptime / Prometheus / Grafana]
+NUC1 --> Storage[Samba / Storage]
+
+NUC2 --> HA[Home Assistant]
+
+OVH --> GameServers[Game Servers]
+OVH --> Observability[External Monitoring Stack]
+```
+
 ## Virtualization
 
 I rely on Docker as my primary way to run and manage services across my homelab.  
