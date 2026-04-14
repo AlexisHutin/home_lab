@@ -84,7 +84,6 @@ This machine hosts the majority of my workloads, including media services, autom
 - Prometheus — metrics collection (legacy setup, planned migration to NUC)
 - Grafana — visualization and dashboards
 - InfluxDB — time-series database
-- Excalidash — personal dashboard / analytics layer
 
 #### Media Stack
 - Plex — media server
