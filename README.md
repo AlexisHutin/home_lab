@@ -1,29 +1,70 @@
 # Home Lab 🧪
 ## Overview
 
-The primary objective of my home lab is to host various services independently, reducing reliance on cloud services, and fostering continuous learning through experimentation.
+My homelab has two main purposes:
+
+- Replace cloud services with self-hosted alternatives
+- Serve as a playground to experiment and learn
+
+Some services are now part of my daily life and have replaced paid alternatives, while others are still experimental.
+
+Current areas of improvement include:
+
+- Unified authentication (when supported)
+- Infrastructure as Code (IaC) and GitOps
+- Automated and reliable backups
+- More centralized monitoring with alerting
 
 ## Setup
 
-In my home lab setup, I utilize two main hardware components:
+My homelab is composed of several machines, each with a specific role:
 
-- Raspberry Pi: This device serves as the foundation for my home automation server running Home Assistant. It provides a lightweight and efficient platform for managing smart home devices and automations.
+- **Main Server:**  
+  This is still the core of my setup. It handles most of my services, including media, automation, and AI-related workloads.
 
-- Powerful Server: For more demanding tasks and services, I have a more robust server equipped with ample storage, considerable RAM, and a dedicated GPU for AI-related workloads. This server runs on Ubuntu Server as the operating system, providing a stable and versatile environment for hosting a wide range of services.
+- **Home Automation NUC:**  
+  I migrated my home automation setup (Home Assistant) from a Raspberry Pi to a dedicated NUC for better performance and reliability.
 
-- NUC: This small form-factor computer will be dedicated to backup operations. It offers a compact yet powerful solution for managing backups and ensuring data integrity.
+- **Secondary NUC:**  
+  Currently underused, but planned to host monitoring, alerting, and backup-related services in order to isolate them from the main server.
+
+- **OVH Server:**  
+  A remote server mainly used to host multiplayer game servers, along with a dedicated observability stack.
+
+In addition to this, I have a **4-node ThinkCentre cluster (with a dedicated switch and router)** that is not yet configured.
+
+This cluster is intended as a learning platform to experiment with Kubernetes and cluster management, likely using NixOS in the future.  
+A dedicated section will cover this setup once it is operational.
 
 ## Virtualization
 
-In my home lab setup, Docker serves as the primary virtualization tool, allowing me to efficiently manage and deploy containerized services. Docker provides a lightweight and portable solution for encapsulating each service into its own container, ensuring consistency and ease of management across different platforms.
+I rely on Docker as my primary way to run and manage services across my homelab.  
+For now, I stick to a simple and efficient approach using Docker Compose, which fully meets my current needs.
 
-Additionally, I utilize Portainer as a Docker management interface, which simplifies the management of my containerized applications. Portainer offers a user-friendly web interface that allows me to monitor, manage, and deploy containers with ease, providing a centralized management solution for my Docker environment.
+To manage my containers, I use Portainer as a centralized interface. It allows me to monitor and deploy services across multiple machines, including my main server, both NUCs, and my OVH server.
 
-This combination of Docker and Portainer facilitates the seamless deployment and management of my services within my home lab, enabling efficient resource utilization and streamlined operations.
+Most of my deployments are handled through Portainer stacks, making it easy to manage and update services without directly interacting with the CLI.
+
+I am currently experimenting with managing my infrastructure using Infrastructure as Code. In particular, I am testing the Portainer Terraform provider to define and manage my stacks programmatically.
+
+In the future, I aim to move toward a more GitOps-oriented workflow, where my infrastructure and services are fully defined and deployed from version-controlled configurations.
+
+While Docker Compose is still my main approach today, I plan to explore Kubernetes on my dedicated cluster as part of my learning journey.
 
 ## Future Expansion
 
-While my current setup meets my immediate needs, I'm continuously exploring opportunities for expansion and improvement. This includes experimenting with new services, optimizing resource allocation, and integrating emerging technologies to enhance the capabilities of my home lab.
+While my current setup already covers most of my needs, I’m continuously working on improving and evolving my homelab.
+
+Some of the main areas I want to focus on next include:
+
+- Setting up a more unified authentication system across services
+- Moving toward Infrastructure as Code (IaC) and GitOps workflows
+- Improving and automating backup strategies
+- Building a more centralized monitoring system with proper alerting
+
+I also plan to set up and experiment with a dedicated Kubernetes cluster using my ThinkCentre nodes, mainly as a learning platform.
+
+Overall, the goal is to progressively make the setup more reliable, maintainable, and closer to a production-like environment while keeping room for experimentation.
 
 ## My Services
 - **BIND9:** An open-source DNS server.
