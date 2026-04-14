@@ -67,95 +67,303 @@ I also plan to set up and experiment with a dedicated Kubernetes cluster using m
 Overall, the goal is to progressively make the setup more reliable, maintainable, and closer to a production-like environment while keeping room for experimentation.
 
 ## My Services
-- **BIND9:** An open-source DNS server.
-- **Dashdot:** A dashboard for monitoring my server.
-- **Dozzle:** A web interface for viewing Docker logs.
-- **DuckDNS:** A free dynamic DNS update service.
-- **Faster-Whisper:** A STT service.
-- **Filebrowser:** A web-based file manager.
-- **Flaresolverr:** A captcha resolver for media streaming.
-- **Grafana:** A data analysis and visualization platform.
-- **Homer:** A web portal for quick access to your applications and services.
-- **InfluxDB:** A time-series database.
-- **Jackett:** A torrent tracker aggregator.
-- **Kaizoku:** A service like Radarr or Sonarr but for scan.
-- **Komga:** A digital manga library.
-- **Minecraft Server:** A game server for Minecraft.
-- **Monocker:** A Docker container health monitoring & alerting service.
-- **n8n:** A workflow automation tool.
-- **Nginx-Proxy-Manager:** An Nginx proxy manager for hosting multiple websites on the same server.
-- **Olivetin:** Predifined shell commands from web ui.
-- **Ollama:** A selfhosted LLM service.
-- **Open-WebUI:** A web ui for Ollama.
-- **Overseerr:** A request manager for missing media.
-- **Piper:** A TTS service.
-- **Plex:** A media server for streaming content.
-- **Portainer:** A Docker container management interface.
-- **Prometheus:** A monitoring and alerting system.
-- **QBittorrent:** A BitTorrent client.
-- **Radarr:** A movie manager.
-- **RomM:** A tool for managing ROM files.
-- **Scrutiny:** A web-based tool for monitoring and analyzing disk health.
-- **Sonarr:** A TV series manager.
-- **Tautulli:** A monitoring and tracking tool for Plex Media Server.
-- **Telegraf:** A data collection agent for InfluxDB.
-- **Uptime Kuma:** A monitoring tool focused on uptime monitoring and status page generation.
-- **Watchtower:** An automatic update service for Docker containers.
 
-For access to all Docker Compose files, please visit [this folder](link_to_your_folder_containing_docker_compose_files).
+My homelab services are distributed across two main machines: a primary server hosting most applications, and a secondary NUC dedicated to infrastructure, networking, and monitoring.
 
-Below is a visual representation of the services comprising my homelab setup:
+---
 
-![Homelab Diagram](HomeLab.drawio.png)
+### Main Server (Core Platform)
+
+This machine hosts the majority of my workloads, including media services, automation, AI tools, and user-facing applications.
+
+#### Infrastructure & Access
+- Nginx Proxy Manager — reverse proxy and routing layer
+- Homer — service dashboard / entry point
+
+#### Observability & Monitoring
+- Prometheus — metrics collection (legacy setup, planned migration to NUC)
+- Grafana — visualization and dashboards
+- InfluxDB — time-series database
+- Excalidash — personal dashboard / analytics layer
+
+#### Media Stack
+- Plex — media server
+- Overseerr — media request management
+- Radarr — movie management
+- Sonarr — TV series management
+- Prowlarr — indexer manager
+- qBittorrent — torrent client
+- Komga — digital comics/manga library
+- Kamiyomu — manga management tool
+- Suwayomi — manga reading backend
+
+#### AI & Automation
+- Ollama — local LLM runtime
+- Open WebUI — interface for Ollama
+- Faster-Whisper — speech-to-text service
+- n8n — workflow automation engine
+
+#### File & Knowledge Management
+- Filebrowser — web-based file manager
+- OtterWiki — personal wiki system
+- Vikunja — task and project management
+
+#### Utilities & Operations
+- Dozzle — Docker log viewer
+- Watchtower — automatic container updates (deployed on all machines)
+
+---
+
+### NUC (Infrastructure Node)
+
+This machine is dedicated to network services, infrastructure components, and lightweight system utilities.
+
+#### Network & Security
+- AdGuard Home — DNS-based ad blocking and local DNS resolver
+
+#### Monitoring (Target Architecture)
+- Uptime Kuma — uptime monitoring and status pages
+- Prometheus — planned migration target for centralized metrics collection
+
+#### Storage & Sharing
+- Samba — network file sharing service
+
+#### Maintenance
+- Watchtower — automatic container updates (deployed on all machines)
+
+---
+
+### Architecture Notes
+
+- The main server acts as the application and service hub.
+- The NUC is progressively becoming the infrastructure and monitoring node.
+- Prometheus is currently in a transitional state, with a planned migration toward the NUC for better separation of concerns.
+- Watchtower is intentionally deployed on every machine to ensure consistent container updates across the entire homelab.
+
+---
+
+### Design Intent
+
+This architecture is evolving toward:
+
+- clearer separation between applications and infrastructure
+- improved resilience of monitoring and network services
+- reduced load on the main server for system-level components
+- better maintainability through functional isolation
 
 ## Networking
 
-In my home lab setup, I have two machines: the Raspberry Pi and my server, each configured with static IP addresses assigned by my router provided by Free. 
+My home network is currently based on a simple flat architecture managed by a consumer router (Freebox), with static IP assignments for core devices.
 
-A small portion of my services are accessible from the outside world thanks to a reverse proxy setup and DuckDNS. This allows me to conveniently access my services remotely without exposing individual ports.
+---
 
-<!-- Additionally, I utilize a local DNS server to provide more user-friendly domain names for my services. This is achieved through a combination of Bind9 for DNS resolution and the reverse proxy for routing traffic based on domain names. This setup enables me to access my services using more intuitive domain names rather than relying solely on IP addresses and ports, which can be cumbersome.
+### DNS
 
-For more details on my local DNS configuration, please refer to [this file](link_to_your_local_dns_config). -->
+DNS resolution is primarily handled by AdGuard Home, running on the NUC.
 
-Moreover, I am planning to enhance the security of my network by implementing VLANs. Learning and adding VLANs will enable me to segment certain parts of my network, enhancing security by isolating specific devices or services from others. This will provide an additional layer of protection and control over network traffic within my homelab environment.
+- AdGuard Home is the main DNS resolver for the network
+- The router DNS is used as a fallback in case of failure
+- DNS filtering and local resolution are centralized in AdGuard Home
+
+This setup provides both ad-blocking capabilities and a centralized way to manage local name resolution.
+
+---
+
+### Internal Access
+
+Internal service access is still mostly IP-based.
+
+- Most services are accessed directly via their static IP addresses
+- A more unified service discovery or internal naming system has not yet been implemented, as no current solution fully fits my needs
+
+This approach keeps the setup simple but is less convenient than a fully domain-based internal routing system.
+
+---
+
+### External Access
+
+A limited number of non-critical services are exposed to the internet.
+
+- Exposure is handled through Nginx Proxy Manager
+- HTTPS termination is managed at the reverse proxy level
+- Public domains are managed via OVH
+- Dynamic DNS updates are handled through the router’s built-in DynDNS mechanism
+
+Only services that are not critical are exposed externally, depending on access requirements.
+
+---
+
+### Reverse Proxy
+
+Nginx Proxy Manager acts as the main entry point for HTTP/HTTPS traffic when services are exposed.
+
+- It handles domain-based routing for externally accessible services
+- It manages SSL certificates
+- It simplifies exposure without direct port forwarding per service
+
+---
+
+### Network Architecture
+
+The current network is a flat architecture:
+
+- No VLAN segmentation is implemented yet
+- All devices share the same logical network
+- Isolation is handled at the service and application level rather than the network level
+
+---
+
+### Future Improvements
+
+Planned improvements for the network layer include:
+
+- Introduction of VLANs to segment the network (e.g., servers, IoT, clients)
+- A more consistent internal service discovery mechanism (DNS-based or alternative solution)
+- Improved isolation between devices and services
+- Stronger security boundaries between network zones
+
+These improvements are currently in the planning phase and will be introduced progressively as the infrastructure evolves.
 
 ## Monitoring
 
-In my home lab setup, I employ several tools for monitoring different aspects of my infrastructure:
+My monitoring setup is currently split across several tools, each covering a specific part of the stack. It is functional but still evolving toward a more unified system.
 
-- **Dashdot:** I use Dashdot for a quick overview of the general resource consumption of my server. It provides a concise summary of system performance metrics.
+---
 
-- **Prometheus/Grafana:** For more detailed metrics and visualization, I utilize the combination of Prometheus and Grafana. Prometheus collects metrics from various sources, while Grafana serves as a powerful visualization tool. This setup allows me to monitor and analyze system performance in greater depth.
+### Metrics Collection
 
-- **Telegraf/InfluxDB:** In parallel, I leverage Telegraf to gather custom metrics from my Minecraft server, which are then stored in InfluxDB. Additionally, I capture certain metrics from Home Assistant and store them in the same InfluxDB database. While I currently display only a subset of these data in Grafana, my monitoring setup is designed to evolve over time as I refine and expand my monitoring requirements.
-  
-- **Uptime Kuma:** Furthermore, I incorporate Uptime Kuma for uptime monitoring and status page generation. This tool helps me track the availability of my services and provides real-time visibility into system health.
+The main metrics system is based on Prometheus, with Grafana used for visualization.
 
-- **Scrutiny:** I use Scrutiny to monitor and analyze the health of my disks. It provides detailed information on the status of storage devices, enabling proactive maintenance and prevention of data loss.
+- Prometheus is used for collecting system and service metrics
+- Grafana is used to build dashboards and visualize data
+- This setup is still evolving, and the final architecture is not fully decided yet
+- Prometheus is expected to eventually be centralized on the NUC, but this is not finalized
 
-In the near future, I plan to incorporate alerting into my monitoring setup. This will enable me to receive notifications and take proactive actions based on predefined thresholds and conditions, further enhancing the reliability and resilience of my home lab environment.
+---
 
-This multi-layered monitoring approach provides me with both high-level insights and detailed analytics, enabling me to effectively manage and optimize my home lab environment.
+### Time-Series Data
 
+In parallel to Prometheus, I still use a Telegraf + InfluxDB stack.
+
+- Used mainly for Home Assistant metrics
+- Also used for Minecraft server metrics when hosted on OVH
+- Some newer setups are now moving toward Prometheus exporters instead of Telegraf
+- This stack is still maintained for legacy and convenience reasons
+
+---
+
+### Uptime Monitoring
+
+Uptime Kuma is used for service availability monitoring.
+
+- It monitors the availability of selected services
+- It is also used for basic status pages
+- Some critical services (such as Home Assistant) are actively monitored through it
+
+This is currently the simplest and most reliable part of the monitoring stack.
+
+---
+
+### Disks Monitoring
+
+- Scrutiny was previously used for disk health monitoring
+- It is no longer part of the current setup
+
+---
+
+### Dashboards
+
+- Excalidash is currently being tested as a personal dashboard layer
+- Grafana remains the main tool for technical dashboards and metrics visualization
+
+---
+
+### Alerting
+
+Alerting is still very limited at the moment.
+
+- Uptime Kuma is used for basic notifications on selected services
+- More advanced alerting is not yet implemented
+- This is part of the planned improvements for the monitoring stack
+
+---
+
+### Overall Direction
+
+The monitoring stack is currently in a transition phase:
+
+- Prometheus is becoming the main metrics system
+- InfluxDB / Telegraf is still used for specific legacy use cases
+- Uptime Kuma handles availability monitoring
+- The goal is to progressively reduce fragmentation and move toward a more unified observability stack
 
 ## Backup and Recovery
 
-Currently, I am in the process of devising a backup strategy, exploring tools to automate backups in a straightforward manner. The plan, as it stands, includes:
+Backup and recovery is currently one of the main work-in-progress areas of my homelab. The goal is to progressively move from partial and service-specific backups to a more consistent and centralized strategy.
 
-- Backing up the configurations of all my containers.
-- Creating backups of all my Docker Compose configurations within Portainer (along with Portainer's own configurations).
+---
 
-Future steps include:
+### Current State
 
-- Duplicating these backups to a local backup server (planned but not yet available).
-- Duplicating these backups to the cloud for added redundancy.
+At the moment, there is no fully unified backup system across the infrastructure.
 
-By implementing this backup plan, I aim to safeguard against data loss and ensure the resilience of my home lab environment. Stay tuned for further updates as this backup strategy evolves.
+- Most services do not yet have automated backups
+- Backups are currently limited to specific use cases
+- Everything is stored locally only, with no offsite or cloud redundancy
 
+---
 
+### Home Assistant
+
+Home Assistant is currently the only system with a proper backup strategy in place.
+
+- Automated backups run every night
+- A retention policy keeps the last 3 backups
+- Backups are managed directly through Home Assistant’s built-in system
+
+This is currently the most reliable part of the backup setup.
+
+---
+
+### Planned Backup Scope
+
+The future backup strategy is intended to cover:
+
+- Docker configurations and Compose stacks
+- Application data (such as Plex, Komga, and similar services)
+- Databases (including InfluxDB and other persistent data stores)
+
+The goal is to ensure that both configuration and data layers can be restored reliably.
+
+---
+
+### Storage Strategy
+
+- All backups are currently stored locally
+- No secondary storage or external backup location is implemented yet
+- Offsite and cloud backups are planned for future iterations
+
+---
+
+### Future Improvements
+
+Planned evolution of the backup system includes:
+
+- Automated backups for all critical services
+- Separation between configuration backups and data backups
+- Introduction of a local backup server
+- Addition of offsite or cloud redundancy
+- Regular restore testing to validate backup integrity
+
+---
+
+### Overall Direction
+
+The backup strategy is currently in an early stage but clearly identified as a priority. The long-term goal is to move toward a reliable, automated, and restorable system covering the entire homelab.olves.
 
 ## AI Assistance
 
-This documentation was created with the assistance of AI. Through the collaboration with an AI language model, I was able to streamline the process of documenting my home lab setup, ensuring clarity and comprehensiveness in conveying the details of my infrastructure and configurations. This usage of AI technology has facilitated the documentation process, enabling me to focus on refining and enhancing my home lab environment.
+This documentation was written with the help of an AI assistant.
+
+I used it to help structure and clarify parts of the content, which made the documentation process faster and easier to manage. It helped me focus more on refining my homelab setup rather than spending too much time on wording and structure.
 
